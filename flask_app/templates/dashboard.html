@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Compartir Recetas</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+	<header>
+		<div class="row">
+			<h1>Bienvenida!!!, {{usuario.nombre}} </h1>
+			<p>Todos los posteos de recetas:</p>
+			<div class=" text-end">
+				<a href="/crear_receta">Create</a>
+				<a href="/logout">Logout</a>
+			</div>
+		</div>
+	</header>
+
+	<table class="table table-striped mi_tabla" id="tablita">
+		<tr>
+			<th>Nombre</th> 
+			<th>Bajo 30 Min</th>
+			<th>Posteado por</th> 
+			<th>Acciones</th>
+		</tr>
+		{% for receta in todas_recetas_usuarios %}
+		<tr>
+			<td>{{receta.name}}</td> 
+			{% if receta.bajotreintamin == '1' %}
+			<td>Yes</td>
+			{% else %}
+			<td>No</td>
+			{% endif %}
+
+			<td>{{receta.usuario}}</td>
+			<td> 
+				{% if receta.usuario_id == session['usuario_id'] %}
+				<a href="/editar/receta/{{receta.id}}">Editar</a>
+				<a href="/eliminar/receta/{{receta.id}}">Eliminar</a>
+				{% endif %}
+				<a href="/ver/receta/{{receta.id}}">Ver</a>
+			</td>
+		</tr>   
+		{% endfor %}
+
+	</table>
+
+</body>
+</html>

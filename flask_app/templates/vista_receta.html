@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-8 "></div>
+		<div class="col-4 text-end ">
+			<nav class="navbar bg-light">
+				<a href="/dashboard" class="me-5">Volver a recetas</a>
+				<a href="/logout">Logout</a>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row mb-4">
+		<div class="col-6">
+			<h1>{{receta.name}}</h1>
+			<h1>Posteado por : {{receta.usuario}}</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-8 border border-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-5">Descripcion</div>
+					<div class="col-7">{{receta.descripcion}}</div>
+				</div>
+				<div class="row m-3">
+					<div class="col-5 ">Bajo 30 Minutes</div>
+					<div class="col-7">{% if receta.bajotreintamin=="1" %} YES {% else %} NO {% endif %}</div>
+				</div>
+				<div class="row m-3">
+					<div class="col-5 ">Instrucciones</div>
+					<div class="col-7 ">{{receta.instruccion}}</div>
+				</div>
+				<div class="row m-3">
+					<div class="col-5">Date Made</div>
+					<div class="col-7">{{receta.date_made}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
